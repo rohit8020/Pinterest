@@ -1,0 +1,20 @@
+#Please provide the Username and Password for the Datasource mentioned below.
+spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost/userservice?useSSL=false
+    username: root
+    password: secretpassword
+  jpa:
+    hibernate.ddl-auto: update
+
+  #Kindly provide spring microservices properties like application name, cloud consul host name and service discovery
+  application:
+    name: UserMS
+  cloud:
+    consul:
+      discovery:
+        hostname: localhost
+#Add the server port as mentioned in the QP
+server:
+  port: 2002

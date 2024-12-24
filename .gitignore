@@ -1,0 +1,178 @@
+UserMS/HELP.md
+UserMS/target/
+!UserMS/.mvn/wrapper/maven-wrapper.jar
+!UserMS/**/src/main/**/target/
+!UserMS/**/src/test/**/target/
+
+### STS ###
+UserMS/.apt_generated
+UserMS/.classpath
+UserMS/.factorypath
+UserMS/.project
+UserMS/.settings
+UserMS/.springBeans
+UserMS/.sts4-cache
+
+### IntelliJ IDEA ###
+UserMS/.idea
+UserMS/*.iws
+UserMS/*.iml
+UserMS/*.ipr
+
+### NetBeans ###
+UserMS/nbproject/private/
+UserMS/nbbuild/
+UserMS/dist/
+UserMS/nbdist/
+UserMS/.nb-gradle/
+UserMS/build/
+!UserMS/**/src/main/**/build/
+!UserMS/**/src/test/**/build/
+
+### VS Code ###
+UserMS/.vscode/
+
+
+
+
+CreationMS/HELP.md
+CreationMS/target/
+!CreationMS/.mvn/wrapper/maven-wrapper.jar
+!CreationMS/**/src/main/**/target/
+!CreationMS/**/src/test/**/target/
+
+### STS ###
+CreationMS/.apt_generated
+CreationMS/.classpath
+CreationMS/.factorypath
+CreationMS/.project
+CreationMS/.settings
+CreationMS/.springBeans
+CreationMS/.sts4-cache
+
+### IntelliJ IDEA ###
+CreationMS/.idea
+CreationMS/*.iws
+CreationMS/*.iml
+CreationMS/*.ipr
+
+### NetBeans ###
+CreationMS/nbproject/private/
+CreationMS/nbbuild/
+CreationMS/dist/
+CreationMS/nbdist/
+CreationMS/.nb-gradle/
+CreationMS/build/
+!CreationMS/**/src/main/**/build/
+!CreationMS/**/src/test/**/build/
+
+### VS Code ###
+CreationMS/.vscode/
+
+
+GatewayMS/HELP.md
+GatewayMS/target/
+!GatewayMS/.mvn/wrapper/maven-wrapper.jar
+!GatewayMS/**/src/main/**/target/
+!GatewayMS/**/src/test/**/target/
+
+### STS ###
+GatewayMS/.apt_generated
+GatewayMS/.classpath
+GatewayMS/.factorypath
+GatewayMS/.project
+GatewayMS/.settings
+GatewayMS/.springBeans
+GatewayMS/.sts4-cache
+
+### IntelliJ IDEA ###
+GatewayMS/.idea
+GatewayMS/*.iws
+GatewayMS/*.iml
+GatewayMS/*.ipr
+
+### NetBeans ###
+GatewayMS/nbproject/private/
+GatewayMS/nbbuild/
+GatewayMS/dist/
+GatewayMS/nbdist/
+GatewayMS/.nb-gradle/
+GatewayMS/build/
+!GatewayMS/**/src/main/**/build/
+!GatewayMS/**/src/test/**/build/
+
+### VS Code ###
+GatewayMS/.vscode/
+
+
+
+CollabMS/HELP.md
+CollabMS/target/
+!CollabMS/.mvn/wrapper/maven-wrapper.jar
+!CollabMS/**/src/main/**/target/
+!CollabMS/**/src/test/**/target/
+
+### STS ###
+CollabMS/.apt_generated
+CollabMS/.classpath
+CollabMS/.factorypath
+CollabMS/.project
+CollabMS/.settings
+CollabMS/.springBeans
+CollabMS/.sts4-cache
+
+### IntelliJ IDEA ###
+CollabMS/.idea
+CollabMS/*.iws
+CollabMS/*.iml
+CollabMS/*.ipr
+
+### NetBeans ###
+CollabMS/nbproject/private/
+CollabMS/nbbuild/
+CollabMS/dist/
+CollabMS/nbdist/
+CollabMS/.nb-gradle/
+CollabMS/build/
+!CollabMS/**/src/main/**/build/
+!CollabMS/**/src/test/**/build/
+
+### VS Code ###
+CollabMS/.vscode/
+
+
+
+
+BusinessMS/HELP.md
+BusinessMS/target/
+!BusinessMS/.mvn/wrapper/maven-wrapper.jar
+!BusinessMS/**/src/main/**/target/
+!BusinessMS/**/src/test/**/target/
+
+### STS ###
+BusinessMS/.apt_generated
+BusinessMS/.classpath
+BusinessMS/.factorypath
+BusinessMS/.project
+BusinessMS/.settings
+BusinessMS/.springBeans
+BusinessMS/.sts4-cache
+
+### IntelliJ IDEA ###
+BusinessMS/.idea
+BusinessMS/*.iws
+BusinessMS/*.iml
+BusinessMS/*.ipr
+
+### NetBeans ###
+BusinessMS/nbproject/private/
+BusinessMS/nbbuild/
+BusinessMS/dist/
+BusinessMS/nbdist/
+BusinessMS/.nb-gradle/
+BusinessMS/build/
+!BusinessMS/**/src/main/**/build/
+!BusinessMS/**/src/test/**/build/
+
+### VS Code ###
+BusinessMS/.vscode/

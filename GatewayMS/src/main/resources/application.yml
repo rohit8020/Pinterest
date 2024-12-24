@@ -1,0 +1,43 @@
+#Add the server port as mentioned in the QP
+server:
+  port: 2000
+
+#Kindly provide Spring Gateway properties like application name, cloud consul, gateway service discovery and routes along with predicates.
+spring:
+  application:
+    name: GatewayMS
+
+  cloud:
+    consul:
+      host: localhost
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+
+      routes:
+        - id: UserMS
+          uri: lb://UserMS
+          predicates:
+            - Path=/auth/**
+          filters:
+            - AuthenticationFilter
+        - id: CreationMS
+          uri: lb://CreationMS
+          predicates:
+            - Path=/content/**
+          filters:
+            - AuthenticationFilter
+        - id: CollabMS
+          uri: lb://CollabMS
+          predicates:
+            - Path=/collab/**
+          filters:
+            - AuthenticationFilter
+        - id: BusinessMS
+          uri: lb://BusinessMS
+          predicates:
+            - Path=/add-business/**
+          filters:
+            - AuthenticationFilter
+

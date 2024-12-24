@@ -1,0 +1,21 @@
+server:
+  port: 2008
+
+spring:
+  application:
+    name: BusinessMS
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost/businessservice?useSSL=false
+    username: root
+    password: secretpassword
+  jpa:
+    hibernate.ddl-auto: update
+  h2:
+    console:
+      enabled: true
+  cloud:
+    consul:
+      host: localhost
+      discovery:
+        hostname: localhost
