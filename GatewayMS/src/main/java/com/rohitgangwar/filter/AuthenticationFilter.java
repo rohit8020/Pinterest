@@ -1,6 +1,6 @@
 package com.rohitgangwar.filter;
 
-import com.infy.util.JwtUtil
+import com.rohitgangwar.util.JwtUtil;
 import io.jsonwebtoken.Claims;
 
 import java.util.Map;
