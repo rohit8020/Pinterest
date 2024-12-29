@@ -3,8 +3,8 @@ CREATE TABLE pins (
     title VARCHAR(255),
     description TEXT,
     image TEXT,
-    createdBy BIGINT,
-    boardId BIGINT,
+    created_by BIGINT,
+    board_id BIGINT,
     link VARCHAR(255),
     tags VARCHAR(255),
     privacy BOOLEAN

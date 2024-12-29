@@ -38,7 +38,7 @@ public class PinController {
     @PostMapping("/create")
     public ResponseEntity<String> createPin(@RequestBody @Valid PinDTO pinDTO) {
         try {
-            pinService.creatPin(pinDTO);
+            pinService.createPin(pinDTO);
             return new ResponseEntity<String>("Pin created successfully!", HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<String>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);

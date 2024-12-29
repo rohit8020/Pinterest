@@ -44,7 +44,9 @@ public class AuthenticationFilter extends AbstractGatewayFilterFactory<Authentic
                     Claims claims = jwtUtil.extractClaims(authHeader);
 
                     for (Map.Entry<String, Object> entry : claims.entrySet()) {
-                        exchange.getRequest().mutate().header("X_" + entry.getKey(), entry.getValue().toString());
+                        ServerHttpRequest mutatedRequest = exchange.getRequest().mutate().header("X_" + entry.getKey(), entry.getValue().toString()).build();
+                        exchange = exchange.mutate().request(mutatedRequest).build();
+//                        exchange.getRequest().mutate().build();
                     }
                     return chain.filter(exchange);
                 } catch (Exception e) {

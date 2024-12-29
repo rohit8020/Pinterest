@@ -19,7 +19,6 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/auth")
-@CrossOrigin(origins = "http://localhost:3000")
 public class AuthController {
     @Autowired
     private AuthService service;
@@ -61,6 +60,7 @@ public class AuthController {
             userDTO.setUsername(e.getUsername());
             return userDTO;
         }).toList();
+        System.out.println("fetchByUserIds");
         return new ResponseEntity<List<UserResponseDTO>>(usernameList, HttpStatus.OK);
     }
 

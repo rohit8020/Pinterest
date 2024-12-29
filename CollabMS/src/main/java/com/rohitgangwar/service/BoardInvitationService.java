@@ -47,8 +47,8 @@ public class BoardInvitationService {
         return boardInvitation.getStatus();
     }
 
-    public List<BoardInvitation> getInvitations(Long invitee){
-        return boardInvitationRepository.findByInviteeAndStatus(invitee, "pending");
+    public List<BoardInvitation> getInvitations(Long invitee,String status){
+        return boardInvitationRepository.findByInviteeAndStatus(invitee, status);
     }
 }
 

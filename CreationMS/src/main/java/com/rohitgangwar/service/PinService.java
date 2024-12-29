@@ -18,7 +18,7 @@ public class PinService {
     @Autowired
     private PinRepository pinRepository;
 
-    public void creatPin(PinDTO pinDTO) {
+    public void createPin(PinDTO pinDTO) {
         Pin pin=pinDTO.createEntity();
         pinRepository.save(pin);
     }

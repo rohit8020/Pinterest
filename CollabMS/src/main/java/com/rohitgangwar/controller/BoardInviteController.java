@@ -2,12 +2,14 @@ package com.rohitgangwar.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,6 +31,7 @@ import com.rohitgangwar.entity.BoardInvitation;
 import com.rohitgangwar.service.BoardInvitationService;
 
 @RestController
+@Validated
 @RequestMapping("/collab/invite")
 public class BoardInviteController {
 
@@ -46,7 +49,7 @@ public class BoardInviteController {
                     "http://CreationMS/content/board/get?boardId=" + invitationDTO.getBoardId(), BoardDTO.class);
             UserDTO invitee = restTemplate.getForObject("http://UserMS/auth/userbyemail?email=" + invitationDTO.getInvitee(),
                     UserDTO.class);
-            if (inviter == boardDTO.getCreatedBy()) {
+            if (Objects.equals(inviter, boardDTO.getCreatedBy())) {
                 boardInvitationService.createBoardInvitation(invitationDTO, invitee.getUserId(), inviter);
                 return new ResponseEntity<>("Board invitation created successfully", HttpStatus.CREATED);
             } else {
@@ -92,9 +95,9 @@ public class BoardInviteController {
     @GetMapping("/invitations")
     public ResponseEntity<List<InvitationDTO>> getAllInvitations(@RequestHeader("X_userId") Long invitee) {
 
-        List<BoardInvitation> invitationsList = boardInvitationService.getInvitations(invitee);
-        List<Long> inviterIds = invitationsList.stream().map(e -> e.getInviter()).toList();
-        List<Long> boardIds = invitationsList.stream().map(e -> e.getBoardId()).toList();
+        List<BoardInvitation> invitationsList = boardInvitationService.getInvitations(invitee,"pending");
+        List<Long> inviterIds = invitationsList.stream().map(BoardInvitation::getInviter).toList();
+        List<Long> boardIds = invitationsList.stream().map(BoardInvitation::getBoardId).toList();
 
         UriComponentsBuilder builder = UriComponentsBuilder.fromUriString("http://UserMS/auth/fetchByUserIds")
                 .queryParam("userIds", inviterIds.toArray());
@@ -133,5 +136,11 @@ public class BoardInviteController {
         return new ResponseEntity<List<InvitationDTO>>(invitations, HttpStatus.OK);
     }
 
+    @GetMapping("/getBoards")
+    public ResponseEntity<List<Long>> getBoards(@RequestHeader("X_userId") Long invitee){
+        List<BoardInvitation> invitationsList = boardInvitationService.getInvitations(invitee,"accepted");
+        List<Long> boardIds=invitationsList.stream().map(BoardInvitation::getBoardId).toList();
+        return new ResponseEntity<List<Long>>(boardIds,HttpStatus.OK);
+    }
 }
 

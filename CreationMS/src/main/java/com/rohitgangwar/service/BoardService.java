@@ -82,8 +82,7 @@ public class BoardService {
 
     public List<BoardDTO> getBoardsByBoardIds(List<Long> boardIds) {
         List<Board> boards = boardRepository.findAllById(boardIds);
-        List<BoardDTO> boardDTOs = boards.stream().map(board -> BoardDTO.valueOf(board)).toList();
-        return boardDTOs;
+        return boards.stream().map(BoardDTO::valueOf).toList();
     }
 }
 

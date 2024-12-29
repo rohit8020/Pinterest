@@ -1,10 +1,11 @@
 package com.rohitgangwar.controller;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.*;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,6 +22,8 @@ import com.rohitgangwar.entity.Board;
 import com.rohitgangwar.service.BoardService;
 
 import jakarta.validation.Valid;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
 @RequestMapping("/content/board")
@@ -29,19 +32,36 @@ public class BoardController {
 
     @Autowired
     private BoardService boardService;
+    @Autowired
+    private RestTemplate restTemplate;
 
     @GetMapping("/getboards")
     public ResponseEntity<List<BoardDTO>> getBoards(
             @RequestParam Long userId
     ){
         List<Board> boards = boardService.getBoards(userId);
-        List<BoardDTO> boardDTOs=boards.stream().map(e->BoardDTO.valueOf(e)).toList();
-        return new ResponseEntity<List<BoardDTO>>(boardDTOs,HttpStatus.OK);
+        List<BoardDTO> boardDTOs=boards.stream().map(BoardDTO::valueOf).toList();
+        System.out.println("Check 1");
+        UriComponentsBuilder builder = UriComponentsBuilder.fromUriString("http://CollabMS/collab/invite/getBoards");
+        System.out.println("Check 2");
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("X_userId", userId.toString()); // Pass userId as a header if required
+        HttpEntity<Void> entity = new HttpEntity<>(headers);
+        ResponseEntity<List<Long>> response = restTemplate.exchange(builder.toUriString(), HttpMethod.GET,entity,new ParameterizedTypeReference<List<Long>>() {});
+        System.out.println("Check 3");
+        List<Long> boardIds = response.getBody();
+        System.out.println("Check 4");
+        System.out.println(boardIds);
+        List<BoardDTO> boardDTOs2=boardService.getBoardsByBoardIds(boardIds);
+        List<BoardDTO> mergedBoardDTOs = Stream.concat(boardDTOs.stream(), boardDTOs2.stream())
+                .distinct() // Avoid duplicates
+                .toList();
+        return new ResponseEntity<List<BoardDTO>>(mergedBoardDTOs,HttpStatus.OK);
     }
 
     @GetMapping("/fetchByBoardIds")
     public ResponseEntity<List<String>> fetchBoardsByBoardIds(@RequestParam List<Long> boardIds) {
-        List<String> boardNameList = boardService.getBoardsByBoardIds(boardIds).stream().map(e->e.getTitle()).toList();
+        List<String> boardNameList = boardService.getBoardsByBoardIds(boardIds).stream().map(BoardDTO::getTitle).toList();
         return new ResponseEntity<>(boardNameList, HttpStatus.OK);
     }
 

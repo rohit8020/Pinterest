@@ -1,7 +1,7 @@
 package com.rohitgangwar.service;
 import com.rohitgangwar.entity.Business;
 import com.rohitgangwar.exception.BusinessException;
-import com.rohitgangwar.repository.BusinessRepository
+import com.rohitgangwar.repository.BusinessRepository;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
